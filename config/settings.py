@@ -1,12 +1,17 @@
+import os
 from pathlib import Path
+
+from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "django-insecure-_ytsy8le^x6oiu=-hni8qqc2tj$r-lbvypet64l6@oq1n8vw0y"
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
-DEBUG = True
+load_dotenv(BASE_DIR / ".env")
 
-ALLOWED_HOSTS = []
+DEBUG = os.environ.get('DEBUG', False) == 'True'
+
+ALLOWED_HOSTS = [os.getenv("ALLOWED_HOSTS")]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -53,8 +58,12 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": os.getenv("POSTGRES_DB"),
+        "USER": os.getenv("POSTGRES_USER"),
+        "HOST": os.getenv("POSTGRES_HOST"),
+        "PORT": os.getenv("POSTGRES_PORT"),
+        "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
     }
 }
 
