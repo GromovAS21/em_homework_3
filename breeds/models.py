@@ -1,9 +1,10 @@
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 
 class SizeChoices(models.TextChoices):
     """Модель выбора размера породы"""
+
     TINY = "Tiny", "Маленький"
     SMALL = "Small", "Малый"
     MEDIUM = "Medium", "Средний"
@@ -13,41 +14,22 @@ class SizeChoices(models.TextChoices):
 class Breed(models.Model):
     """Модель породы"""
 
-    name = models.CharField(
-        max_length=100,
-        verbose_name="Название породы"
-    )
+    name = models.CharField(max_length=100, verbose_name="Название породы")
     size = models.CharField(
         max_length=50,
-        choices=SizeChoices
+        choices=SizeChoices.choices,
     )
     friendliness = models.PositiveSmallIntegerField(
-        verbose_name="Дружелюбие",
-        validators=[
-            MinValueValidator(1),
-            MaxValueValidator(5)
-        ]
+        verbose_name="Дружелюбие", validators=[MinValueValidator(1), MaxValueValidator(5)]
     )
     trainability = models.PositiveSmallIntegerField(
-        verbose_name="Обучаемость",
-        validators=[
-            MinValueValidator(1),
-            MaxValueValidator(5)
-        ]
+        verbose_name="Обучаемость", validators=[MinValueValidator(1), MaxValueValidator(5)]
     )
     shedding_amount = models.PositiveSmallIntegerField(
-        verbose_name="Объем шерсти",
-        validators=[
-            MinValueValidator(1),
-            MaxValueValidator(5)
-        ]
+        verbose_name="Объем шерсти", validators=[MinValueValidator(1), MaxValueValidator(5)]
     )
     exercise_needs = models.PositiveSmallIntegerField(
-        verbose_name="Требования к физической активности",
-        validators=[
-            MinValueValidator(1),
-            MaxValueValidator(5)
-        ]
+        verbose_name="Требования к физической активности", validators=[MinValueValidator(1), MaxValueValidator(5)]
     )
 
     def __str__(self):

@@ -9,4 +9,4 @@ class BreedAdmin(admin.ModelAdmin):
 
     list_display = ("name", "size", "friendliness", "trainability", "shedding_amount", "exercise_needs")
     list_filter = ("size", "friendliness", "trainability", "shedding_amount", "exercise_needs")
-    search_fields = ("name", )
+    search_fields = ("name",)

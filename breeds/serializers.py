@@ -8,13 +8,4 @@ class BreedSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Breed
-        fields = (
-            "id",
-            "name",
-            "size",
-            "friendliness",
-            "trainability",
-            "shedding_amount",
-            "exercise_needs"
-        )
-
+        fields = ("id", "name", "size", "friendliness", "trainability", "shedding_amount", "exercise_needs")

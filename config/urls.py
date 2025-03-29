@@ -1,5 +1,6 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import include, path
+
 
 admin.site.site_header = 'Администрирование "Собачек и породы"'
 admin.site.site_title = "Собачки и их породы"

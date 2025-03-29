@@ -3,13 +3,14 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 load_dotenv(BASE_DIR / ".env")
 
-DEBUG = os.environ.get('DEBUG', False) == 'True'
+DEBUG = os.environ.get("DEBUG", False) == "True"
 
 ALLOWED_HOSTS = [os.getenv("ALLOWED_HOSTS")]
 
@@ -21,9 +22,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
-
     "dogs",
-    "breeds"
+    "breeds",
 ]
 
 MIDDLEWARE = [

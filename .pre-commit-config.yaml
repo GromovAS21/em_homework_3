@@ -1,16 +1,16 @@
 repos:
   - repo: local
     hooks:
-      - id: isort
-        name: isort
-        entry: isort .
+      - id: black
+        name: black
+        entry: black .
         language: system
         types: [ python ]
         pass_filenames: false
 
-      - id: black
-        name: black
-        entry: black .
+      - id: isort
+        name: isort
+        entry: isort .
         language: system
         types: [ python ]
         pass_filenames: false

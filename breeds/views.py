@@ -5,7 +5,7 @@ from breeds.serializers import BreedSerializer
 
 
 class BreedViewSet(viewsets.ModelViewSet):
-    """ Представление пород собак"""
+    """Представление пород собак"""
 
     queryset = Breed.objects.all()
     serializer_class = BreedSerializer
