@@ -1,4 +1,3 @@
-from django.core.validators import MinValueValidator
 from django.db import models
 
 from breeds.models import Breed
@@ -7,20 +6,15 @@ from breeds.models import Breed
 class GenderChoices(models.TextChoices):
     """Модель выбора пола собаки"""
 
-    MALE = "Male", "Мальчик"
-    FEMALE = "Female", "Девочка"
+    MALE = "male", "Мальчик"
+    FEMALE = "female", "Девочка"
 
 
 class Dog(models.Model):
     """Модель собаки"""
 
     name = models.CharField(max_length=100, verbose_name="Имя собаки")
-    age = models.PositiveSmallIntegerField(
-        verbose_name="Возраст собаки",
-        validators=[
-            MinValueValidator(0),
-        ],
-    )
+    age = models.PositiveSmallIntegerField(verbose_name="Возраст собаки")
     breed = models.ForeignKey(
         Breed, on_delete=models.SET_NULL, verbose_name="Порода собаки", null=True, blank=True, related_name="dogs"
     )

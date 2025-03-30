@@ -5,10 +5,10 @@ from django.db import models
 class SizeChoices(models.TextChoices):
     """Модель выбора размера породы"""
 
-    TINY = "Tiny", "Маленький"
-    SMALL = "Small", "Малый"
-    MEDIUM = "Medium", "Средний"
-    LARGE = "Large", "Большой"
+    TINY = "tiny", "Маленький"
+    SMALL = "small", "Малый"
+    MEDIUM = "medium", "Средний"
+    LARGE = "large", "Большой"
 
 
 class Breed(models.Model):

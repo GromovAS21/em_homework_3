@@ -8,4 +8,4 @@ class DogSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Dog
-        fields = ("id", "name", "breed", "gender", "color", "favorite_food", "favorite_toy")
+        fields = ("id", "name", "breed", "age", "gender", "color", "favorite_food", "favorite_toy")
