@@ -1,17 +1,19 @@
+"""Модели Django для работы с собак."""
+
 from django.db import models
 
 from breeds.models import Breed
 
 
 class GenderChoices(models.TextChoices):
-    """Модель выбора пола собаки"""
+    """Модель выбора пола собаки."""
 
     MALE = "male", "Мальчик"
     FEMALE = "female", "Девочка"
 
 
 class Dog(models.Model):
-    """Модель собаки"""
+    """Модель собаки."""
 
     name = models.CharField(max_length=100, verbose_name="Имя собаки")
     age = models.PositiveSmallIntegerField(verbose_name="Возраст собаки")
@@ -40,9 +42,12 @@ class Dog(models.Model):
     )
 
     def __str__(self):
+        """Метод для отображения объекта в админке."""
         return self.name
 
     class Meta:
+        """Мета класс для модели собаки."""
+
         verbose_name = "Собака"
         verbose_name_plural = "Собаки"
         ordering = ["name"]

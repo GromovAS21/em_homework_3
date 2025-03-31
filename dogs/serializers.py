@@ -1,28 +1,36 @@
+"""Сериализаторы для приложения собак."""
+
 from rest_framework import serializers
 
 from dogs.models import Dog
 
 
 class DogSerializer(serializers.ModelSerializer):
-    """Сериализатор собаки"""
+    """Сериализатор собаки."""
 
     class Meta:
+        """Класс мета для собаки."""
+
         model = Dog
         fields = ("id", "name", "breed", "age", "gender", "color", "favorite_food", "favorite_toy")
 
 
 class DogListSerializer(DogSerializer):
-    """Сериализатор для списка собак"""
+    """Сериализатор для списка собак."""
 
     avg_age = serializers.SerializerMethodField()
 
     class Meta(DogSerializer.Meta):
+        """Класс мета для списка собак."""
+
         fields = DogSerializer.Meta.fields + ("avg_age",)
 
     def get_avg_age(self, obj: Dog) -> int:
-        """Метод для подсчета среднего возраста собак одного вида
+        """Метод для подсчета среднего возраста собак одного вида.
+
         Args:
             obj (Dog): экземпляр собаки
+
         Returns:
             int: средний возраст собак одного вида данного экземпляра
         """
@@ -31,15 +39,18 @@ class DogListSerializer(DogSerializer):
 
 
 class DogDetailSerializer(DogSerializer):
-    """Сериализатор собаки с детальным выводом"""
+    """Сериализатор собаки с детальным выводом."""
 
     num_same_breed = serializers.SerializerMethodField()
 
     class Meta(DogSerializer.Meta):
+        """Класс мета для списка собак."""
+
         fields = DogSerializer.Meta.fields + ("num_same_breed",)
 
     def get_num_same_breed(self, obj: Dog) -> int:
-        """Метод для подсчета количества собак одного вида данного экземпляра
+        """Метод для подсчета количества собак одного вида данного экземпляра.
+
         Args:
             obj (Dog): экземпляр собаки
         Returns:

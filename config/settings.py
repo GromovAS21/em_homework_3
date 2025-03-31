@@ -1,3 +1,5 @@
+"""Настройки приложения Django."""
+
 import os
 from pathlib import Path
 

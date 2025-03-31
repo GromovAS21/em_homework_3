@@ -1,3 +1,5 @@
+"""Представление пород собак."""
+
 from typing import Type
 
 from django.db.models import Count
@@ -8,12 +10,13 @@ from breeds.serializers import BreedListSerializer, BreedSerializer
 
 
 class BreedViewSet(viewsets.ModelViewSet):
-    """Представление пород собак"""
+    """Представление пород собак."""
 
     queryset = Breed.objects.annotate(num_dogs=Count("dogs"))
 
     def get_serializer_class(self) -> Type[BreedSerializer]:
-        """Возвращаем сериализаторы в зависимости от действия
+        """Возвращаем сериализаторы в зависимости от действия.
+
         Returns:
             Class: сериализатор для модели Breed
         """

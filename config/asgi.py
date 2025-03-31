@@ -1,3 +1,5 @@
+"""Приложение для асинхронного взаимодействия с клиентами."""
+
 import os
 
 from django.core.asgi import get_asgi_application

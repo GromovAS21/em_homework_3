@@ -1,9 +1,11 @@
+"""Модели Django для работы с породами собак."""
+
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 
 class SizeChoices(models.TextChoices):
-    """Модель выбора размера породы"""
+    """Модель выбора размера породы."""
 
     TINY = "tiny", "Маленький"
     SMALL = "small", "Малый"
@@ -12,7 +14,7 @@ class SizeChoices(models.TextChoices):
 
 
 class Breed(models.Model):
-    """Модель породы"""
+    """Модель породы."""
 
     name = models.CharField(max_length=100, verbose_name="Название породы")
     size = models.CharField(
@@ -33,13 +35,17 @@ class Breed(models.Model):
     )
 
     def __str__(self):
-        """Строковое представление объекта класса
+        """Строковое представление объекта класса.
+
         Returns:
             str: название породы
         """
         return self.name
 
     class Meta:
+        """Мета класс для модели породы."""
+
+        ordering = ["name"]
         verbose_name = "Порода"
         verbose_name_plural = "Породы"
         ordering = ["name"]
