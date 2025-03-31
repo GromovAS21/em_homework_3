@@ -8,4 +8,28 @@ class BreedSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Breed
-        fields = ("id", "name", "size", "friendliness", "trainability", "shedding_amount", "exercise_needs")
+        fields = (
+            "id",
+            "name",
+            "size",
+            "friendliness",
+            "trainability",
+            "shedding_amount",
+            "exercise_needs",
+            "num_dogs",
+        )
+
+
+class BreedListSerializer(BreedSerializer):
+    """Сериализатор для вывода списка пород собак"""
+
+    num_dogs = serializers.SerializerMethodField()
+
+    class Meta(BreedSerializer.Meta):
+        fields = BreedSerializer.Meta.fields + ("num_dogs",)
+
+    def get_num_dogs(self, obj):
+        """Метод для подсчета количества собак данного породы"""
+        if not hasattr(obj, "num_dogs"):
+            return None
+        return obj.num_dogs
