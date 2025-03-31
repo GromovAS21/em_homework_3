@@ -2,13 +2,43 @@
 name = "homework-3"
 version = "0.1.0"
 description = ""
-authors = ["Anton Gromov <seed14112@yaandex.ru>"]
+authors = ["Anton Gromov <GromovAS121@yandex.ru>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
+django = "^5.1.7"
+djangorestframework = "^3.16.0"
+python-dotenv = "^1.1.0"
+psycopg2-binary = "^2.9.10"
+gunicorn = "^23.0.0"
 
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^4.2.0"
+flake8 = "^7.1.2"
+isort = "^6.0.1"
+black = "^25.1.0"
+flake8-docstrings = "^1.7.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 119
+extend-exclude = "migrations/"
+
+[tool.isort]
+profile = "black"
+include_trailing_comma = true
+line_length = 119
+lines_after_imports = 2
+multi_line_output = 3
+skip = ["__init__.py", "**/migrations/*"]
+
+[tool.pre-commit]
+hooks =[
+{ id = "isort" },
+{ id = "black" },
+]
