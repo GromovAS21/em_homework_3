@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "dogs",
     "breeds",
+    "castom_commands",
 ]
 
 MIDDLEWARE = [
