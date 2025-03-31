@@ -20,7 +20,6 @@ class BreedSerializer(serializers.ModelSerializer):
             "trainability",
             "shedding_amount",
             "exercise_needs",
-            "num_dogs",
         )
 
 
