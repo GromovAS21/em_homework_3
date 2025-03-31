@@ -19,8 +19,13 @@ class DogListSerializer(DogSerializer):
     class Meta(DogSerializer.Meta):
         fields = DogSerializer.Meta.fields + ("avg_age",)
 
-    def get_avg_age(self, obj):
-        """Метод для подсчета среднего возраста собак одного вида"""
+    def get_avg_age(self, obj: Dog) -> int:
+        """Метод для подсчета среднего возраста собак одного вида
+        Args:
+            obj (Dog): экземпляр собаки
+        Returns:
+            int: средний возраст собак одного вида данного экземпляра
+        """
         if hasattr(obj, "avg_age"):
             return obj.avg_age
 
@@ -33,8 +38,12 @@ class DogDetailSerializer(DogSerializer):
     class Meta(DogSerializer.Meta):
         fields = DogSerializer.Meta.fields + ("num_same_breed",)
 
-    def get_num_same_breed(self, obj):
-        """Метод для подсчета количества собак одного вида данного экземпляра"""
-
+    def get_num_same_breed(self, obj: Dog) -> int:
+        """Метод для подсчета количества собак одного вида данного экземпляра
+        Args:
+            obj (Dog): экземпляр собаки
+        Returns:
+            int: количество собак одного вида данного экземпляра
+        """
         if hasattr(obj, "num_same_breed"):
             return obj.num_same_breed

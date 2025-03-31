@@ -26,9 +26,16 @@ class BreedListSerializer(BreedSerializer):
     num_dogs = serializers.SerializerMethodField()
 
     class Meta(BreedSerializer.Meta):
+        """Класс мета для списка пород собак"""
+
         fields = BreedSerializer.Meta.fields + ("num_dogs",)
 
-    def get_num_dogs(self, obj):
-        """Метод для подсчета количества собак данного породы"""
+    def get_num_dogs(self, obj: Breed) -> int:
+        """Метод для подсчета количества собак данного породы
+        Args:
+            obj (Breed): экземпляр породы собак
+        Returns:
+            int: количество собак данного породы
+        """
         if hasattr(obj, "num_dogs"):
             return obj.num_dogs

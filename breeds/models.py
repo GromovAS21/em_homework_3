@@ -33,7 +33,10 @@ class Breed(models.Model):
     )
 
     def __str__(self):
-        """Строковое представление объекта класса"""
+        """Строковое представление объекта класса
+        Returns:
+            str: название породы
+        """
         return self.name
 
     class Meta:
