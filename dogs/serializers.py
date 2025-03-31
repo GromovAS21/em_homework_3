@@ -21,9 +21,8 @@ class DogListSerializer(DogSerializer):
 
     def get_avg_age(self, obj):
         """Метод для подсчета среднего возраста собак одного вида"""
-        if not hasattr(obj, "avg_age"):
-            return None
-        return obj.avg_age
+        if hasattr(obj, "avg_age"):
+            return obj.avg_age
 
 
 class DogDetailSerializer(DogSerializer):
@@ -37,6 +36,5 @@ class DogDetailSerializer(DogSerializer):
     def get_num_same_breed(self, obj):
         """Метод для подсчета количества собак одного вида данного экземпляра"""
 
-        if not hasattr(obj, "num_same_breed"):
-            return None
-        return obj.num_same_breed
+        if hasattr(obj, "num_same_breed"):
+            return obj.num_same_breed

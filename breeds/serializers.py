@@ -30,6 +30,5 @@ class BreedListSerializer(BreedSerializer):
 
     def get_num_dogs(self, obj):
         """Метод для подсчета количества собак данного породы"""
-        if not hasattr(obj, "num_dogs"):
-            return None
-        return obj.num_dogs
+        if hasattr(obj, "num_dogs"):
+            return obj.num_dogs
